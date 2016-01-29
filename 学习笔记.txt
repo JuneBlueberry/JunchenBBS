@@ -49,3 +49,23 @@
 	require:被引用的语句代替require语句
   	require_once:功能与require类似，但是只包含一次，如果已经包含，则不会再包含
   	include:只有执行到include才会引用，被引用的内容不会代替include
+
+
+5.数据表的设计与实现
+	1.用户数据表
+		array findUser(String name);
+		array findUserById(int id);
+		addUser(uName,uPass,head,gender="1");
+		updateUser(id,uName,uPass,head,gender);
+	2.版块数据表
+		findBoard(boardId);
+		findListBoard(parentId);
+	3.发帖数据表
+		addTopic(title,content,uId,boardId);
+		updateTopic(topicId,title,content);
+		deleteTopic(topicId);
+		findTopicById(topicId);
+		int findCountTopic(boardId);
+		findLastTopic(boardId);
+		findListTopic(page,boardId);
+	4.回帖数据表
