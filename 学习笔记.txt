@@ -1,0 +1,51 @@
+1.访问和操作数据库的一般步骤
+	1.建立与mysql的连接
+	2.选择数据库
+	3.定义SQL语句
+	4.执行SQL语句。想mysql发送SQL语句，mysql接收后执行SQL语句，并返回执行结果
+	5.读取，处理结果
+	6.释放内存，关闭连接
+	
+	例如：
+	function get_Connect(){
+			$connection = mysql_connect("localhost","root","","jcbbs") or die("连接创建错误!");
+																	//创建于数据库连接
+			mysql_select_db("jcbbs",$connection) or die("无法激活君尘数据库!");
+																	//选择君尘数据库	
+			mysql_query("set names utf8");							//设置数据库编码为utf8
+			return $connection;
+		}
+	function getUsers(){
+			$conn = get_Connect();									//创建于数据库的连接
+			$query = "select * from bbs_user";						//定义查询语句
+			$result = array();										//定义数组
+			$rs = or die("查询错误!");	//保存查询结果
+			for($i=0; $i<mysql_num_rows($rs); $i++){				//循环将查询结果保存到数组中
+				$result[$i] = mysql_fetch_assoc($rs);
+			}
+			mysql_free_result($rs);									//释放结果集
+			mysql_close($conn);										//关闭连接
+			return $result;											//返回查询结果
+		}
+
+2.or die("error")；	常用与对错误的处理方法
+	die();是PHP内置函数，功能是输出一条消息，并退出当前程序
+
+3.数据库常用函数总结(简单概述，详细查手册)
+	1.mysql_connect();			数据库连接函数
+	2.mysql_get_host_info();	获得指定连接的mysql主机信息
+	3.mysql_select_db();		选择数据库
+	4.mysql_query();			执行SQL语句
+	5.mysql_result();			执行SQL语句返回的结果集
+	6.mysql_num_rows();			取得结果集的行数
+	7.mysql_num_fields();		取得结果集中字段的数目
+	8.mysql_fetch_array();		将结果集组成一个数组
+	9.mysql_fetch_assoc();		将结果集组成数组，返回每个字段
+	10.mysql_free_result();		释放结果集
+	11.mysql_close();			关闭数据库连接
+	12.mysql_affected_rows();	数据影响的哪一行，返回值类型int
+
+4.引用语句
+	require:被引用的语句代替require语句
+  	require_once:功能与require类似，但是只包含一次，如果已经包含，则不会再包含
+  	include:只有执行到include才会引用，被引用的内容不会代替include
