@@ -69,3 +69,21 @@
 		findLastTopic(boardId);
 		findListTopic(page,boardId);
 	4.回帖数据表
+		addReply(title,content,uId,boardId);
+		updateReply(replyId,content);
+		deleteReply(replyId);
+		findReplyById(replyId);
+		findCountReply(topicId);
+		findListReply(page,topicId);
+
+6.一个注意问题：在SQL语句中，字符串需要带‘’，而整形则不需要
+	例如：$addStr = "insert into bbs_reply (title,content,publishTime,modifyTime,uId,topicId) values 
+				 	('$title','$content','$publishTime','$publishTime',$uId,$topicId)";
+
+7.带有外键表格的SQL语句查询
+	例如：select *from bbs_reply r,bbs_user u where r.uId=u.uId and r.replyId=$replyId;
+			上述例子中bbs_reply中uId为外键，因此提前条件是要bbs_user中要有对应的值
+
+8.某一类值数量的SQL语句查询
+	例如：select count (*) as nums from bbs_user where age=$age;
+			上述例子中查询年龄为$age的人的数量,其中nums为返回的数量

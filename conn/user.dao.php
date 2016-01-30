@@ -16,7 +16,7 @@
 
 	/*根据编号查询用户信息*/
 	function findUserById($id){
-		$strQuery = "select * from bbs_user where uId = '$id'";
+		$strQuery = "select * from bbs_user where uId = $id";
 		$rs = execQuery($strQuery);
 		if(count($rs)>0){
 			return $rs[0];
@@ -33,14 +33,14 @@
 		$regTime = strftime($format);
 
 		//准备插入操作参数
-		$insertStr .= "('$uName','$uPass','$head','$gender','$regTime')";	//注意是“.=”,连接语句
+		$insertStr .= "('$uName','$uPass','$head',$gender,'$regTime')";	//注意是“.=”,连接语句
 		$rs = execUpdate($insertStr);
 		return $rs;
 	}
 
 	/*修改用户信息*/
 	function updateUser($id,$uName,$uPass,$head,$gender){
-		$updateStr = "update bbs_user set uName='$uName',uPass='$uPass',gender='$gender',head='$head' where uId='$id'";
+		$updateStr = "update bbs_user set uName='$uName',uPass='$uPass',gender=$gender,head='$head' where uId=$id";
 		$rs = execUpdate($updateStr);
 		return $rs;
 	}

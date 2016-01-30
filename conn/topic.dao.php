@@ -10,7 +10,7 @@
 		$format = "%Y/%m/%d %H:%M:%S";		//设置时间格式
 		$publishTime = strftime($format);	//获取当前时间
 
-		$addStr = "insert into bbs_topic (title,content,publishTime,modifyTime,uId,boardId) values ('$title','$content','$publishTime','$publishTime','$uId','$boardId')";
+		$addStr = "insert into bbs_topic (title,content,publishTime,modifyTime,uId,boardId) values ('$title','$content','$publishTime','$publishTime',$uId,$boardId)";
 
 		$rs = execUpdata($addStr);
 		return $rs;
@@ -21,21 +21,21 @@
 		$format = "%Y/%m/%d %H:%M:%S";		//设置时间格式
 		$modifyTime = strftime($format);	//获取当前时间
 
-		$updateStr = "update bbs_topic set title='$title',content='$content',modifyTime='$modifyTime' where topicId='$topicId'";
+		$updateStr = "update bbs_topic set title='$title',content='$content',modifyTime='$modifyTime' where topicId=$topicId";
 		$rs = execUpdata($updateStr);
 		return $rs;
 	}
 
 	/*删除指定帖子*/
 	function deleteTopic($topicId){
-		$delStr = "delete from bbs_topic where topicId = '$topicId'";
+		$delStr = "delete from bbs_topic where topicId = $topicId";
 		$rs = execUpdata($delStr);
 		return $rs;
 	}
 
 	/*根据编号查询帖子信息*/
 	function findTopicById($topicId){
-		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and topicId='$topicId'";
+		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and topicId=$topicId";
 		$rs = execQuery($strQuery);
 		if(count($rs)>0){
 			return $rs;
@@ -45,7 +45,7 @@
 
 	/*统计版块发表帖子数*/
 	function findCountTopic($boardId){
-		$strQuery = "select count(*) as nums from bbs_topic where boardId='$boardId'";
+		$strQuery = "select count(*) as nums from bbs_topic where boardId=$boardId";
 		$rs = execQuery($strQuery);
 		$value = 0;
 		if(count($rs)>0){
