@@ -2,6 +2,7 @@
 	header('Content-Type:text/html;charset=utf-8');
 
 	require_once 'config.php';	//引入配置文件
+	session_start();	//会话开始
 
 	/*公共方法集，访问数据库*/
 	function get_Connect(){
@@ -32,4 +33,36 @@
 		mysql_close();
 		return $result;
 	}
+
+	/*页面头部输出*/
+	function do_html_head(){
+		$headBuf =<<<HEAD
+		<div>
+		<img src="./image/logo.gif">
+		</div>
+		<!-- 用户信息，登录，注册 -->
+		<div class="h">
+HEAD;
+			if(isset($_SESSION["current_user"])){
+				$current_user = $_SESSION["current_user"];
+				$user_name = $current_user["uName"];
+				$headBuf .= <<<HTML_HEAD
+		您好:<a href="userdetail.php">$user_name</a>
+		&nbsp;|&nbsp;<a href="manage/doLogout.php">登出</a> |
+HTML_HEAD;
+			} else {
+				$headBuf .= <<<HTML_HEAD
+		您尚未  <a href="login.php">登录</a>
+		&nbsp;| &nbsp; <a href="reg.php">注册</a> |
+HTML_HEAD;
+			}
+				$headBuf .= "</div>";	
+				return $headBuf;
+	}
+
+	/*页面尾部输出*/
+	function do_html_footer(){
+		return "<center class=\"gray\">2016 Junchen论坛 版权所有</center>";
+	}
+
 ?>

@@ -87,3 +87,12 @@
 8.某一类值数量的SQL语句查询
 	例如：select count (*) as nums from bbs_user where age=$age;
 			上述例子中查询年龄为$age的人的数量,其中nums为返回的数量
+
+9.php中定界符的使用
+	<<<HEAD
+	...
+	...
+	HEAD;
+
+	HEAD开头和结尾一定要一样，*** 注意，结尾的HEAD一定要另起一行，且不能有任何空格，换行符等。
+

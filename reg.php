@@ -23,20 +23,36 @@
 			}
 		}
 	</script>
+	<?php
+		require_once './conn/conn.php';
+	?>
 </head>
 <body onload="init()">
 	<div>
+	<?php
+		$headBuf =<<<HEAD
+		<div>
 		<img src="./image/logo.gif">
-	</div>
-	<!-- 用户信息，登录，注册 -->
-	<div class="h">
+		</div>
+		<!-- 用户信息，登录，注册 -->
+		<div class="h">
+HEAD;
+			if(isset($_SESSION["current_user"])){
+				$current_user = $_SESSION["current_user"];
+				$user_name = $current_user["uName"];
+				$headBuf .= <<<HTML_HEAD
+		您好:<a href="userdetail.php">$user_name</a>
+		&nbsp;|&nbsp;<a href="manage/doLogin.php">登出</a> |
+HTML_HEAD;
+			} else {
+				$headBuf .= <<<HTML_HEAD
 		您尚未  <a href="login.php">登录</a>
-		&nbsp;| &nbsp; <a href="reg.php">注册</a>
-	</div>
-	<br/>
-	<!-- 导航 -->
-	<div>
-		&gt;&gt;<b><a href="index.php">论坛首页</a></b>
+		&nbsp;| &nbsp; <a href="reg.php">注册</a> |
+HTML_HEAD;
+			}
+				$headBuf .= "</div>";	
+				echo $headBuf;
+		?>
 	</div>
 	<!-- 用户注册表单 -->
 	<div class="t" style="margin-top: 15px" align="center">
