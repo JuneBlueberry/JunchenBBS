@@ -5,7 +5,7 @@
 
 	/*公共方法集，访问数据库*/
 	function get_Connect(){
-		$connection = mysql_connect($GLOBALS["cfg"]["server"]["adds"],$GLOBALS["cfg"]["server"]["db_user"],$GLOBALS["cfg"]["server"]["db_psw"],) or die(header("location:./error.php?msg=数据库服务器参数错误"));
+		$connection = mysql_connect($GLOBALS["cfg"]["server"]["adds"],$GLOBALS["cfg"]["server"]["db_user"],$GLOBALS["cfg"]["server"]["db_psw"]) or die(header("location:./error.php?msg=数据库服务器参数错误"));
 		$db = @mysql_select_db($GLOBALS["cfg"]["server"]["db_name"],$connection) or die(header("location:./error.php?msg=数据库名错误"));
 		mysql_query("set names utf8");
 		return $connection;

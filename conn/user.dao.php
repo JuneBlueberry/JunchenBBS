@@ -6,7 +6,7 @@
 	require_once "conn.php";
 
 	function findUser($name){
-		$strQuery = "select * from bbs_user where uName = '$name'"	//查询语句
+		$strQuery = "select * from bbs_user where uName = '$name'";	//查询语句
 		$rs = execQuery($strQuery);
 		if(count($rs)>0){	//判断查询是否成功
 			return $rs[0];
