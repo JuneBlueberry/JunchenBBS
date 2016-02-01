@@ -40,7 +40,7 @@
 				$uId = $current_user["uId"];		//用uId来查询，是为了防止出现重名的现象
 				$user = findUserById($uId);
 				$formBuf = <<<HTML_FORM
-					<form name="userForm" onSubmit="return check()" action="./manage/doUserUpdate.php" method="post">
+					<form name="userForm" onSubmit="return check()" action="./manage/doUserUpdate.php" enctype="multipart/form-data" method="post">
 						<input name="uId" type="hidden" value="$user[uId]" />
 						<br/>用&nbsp;户&nbsp;名&nbsp;
 						<input class="input" tabindex="1" type="text" maxlength="20" size="40" name="uName" value="$user[uName]"></input>
@@ -48,28 +48,28 @@
 						<input class="input" tabindex="2" type="password" maxlength="20" size="40" name="uPass"></input>
 						<br/>重复密码&nbsp;
 						<input class="input" tabindex="3" type="password" maxlength="20" size="40" name="uPass1"></input>
-HTML_FORM;
-				if($user["gender"] == 1){
-					$formBuf .= <<<HTML_FORM
-						<br/>
-						<br/>性别&nbsp;
-						女<input type="radio" name="gender" value="1" checked="checked"></input>
-						男<input type="radio" name="gender" value="2"></input>
 						<br/>
 HTML_FORM;
-				
-				} else {
-					$formBuf .= <<<HTML_FORM
-						<br/>
-						<br/>性别&nbsp;
-						女<input type="radio" name="gender" value="1"></input>
-						男<input type="radio" name="gender" value="2" checked="checked"></input>
-						<br/>
+                if($user["gender"]==1){
+                    $formBuf.=<<<HTML_FORM
+                        <br/>性别 &nbsp;
+						女<input type="radio" name="gender" value="1" checked="checked"/>
+						男<input type="radio" name="gender" value="2" />
+                        </br>
 HTML_FORM;
-				}
+                } else {
+                    $formBuf.=<<<HTML_FORM
+                        <br/>性别 &nbsp;
+						女<input type="radio" name="gender" value="1" />
+						男<input type="radio" name="gender" value="2" checked="checked"/>
+                        </br>
+HTML_FORM;
+                }
+				$isSystem = false;
 				for ($i = 1; $i <=15; $i++){
 					if($user["head"] == "$i.gif"){
 						$formBuf .= "<img src='image/head/$i.gif'/><input type='radio' name='head' value='$i.gif' checked='checked'/>";
+						$isSystem = true;
 					} else {
 						$formBuf .= "<img src='image/head/$i.gif'/><input type='radio' name='head' value='$i.gif'/>";
 					}
@@ -77,7 +77,12 @@ HTML_FORM;
 						$formBuf .= "<br/>";
 					}
 				}
+					if(!$isSystem){
+						$formBuf .= "<img src='image/head/".$user["head"]."'><input type='radio' name='head' value='".$user["head"]."' checked='checked'/>";
+					}
 					$formBuf .= <<<HTML_FORM
+						<br/>
+						自定义头像<input type="file" name="myHead">
 						<br/>
 						<input class="btn" tabindex="4" type="submit" value="修改"></input>
 						</form>
