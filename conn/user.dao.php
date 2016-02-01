@@ -40,7 +40,11 @@
 
 	/*修改用户信息*/
 	function updateUser($id,$uName,$uPass,$head,$gender){
-		$updateStr = "update bbs_user set uName='$uName',uPass='$uPass',gender=$gender,head='$head' where uId=$id";
+		if( !isset($uPass) ){
+			$updateStr = "update bbs_user set uName='$uName',uPass='$uPass',gender=$gender,head='$head' where uId=$id";
+		} else {
+			$updateStr = "update bbs_user set uName='$uName',gender=$gender,head='$head' where uId=$id";
+		}
 		$rs = execUpdate($updateStr);
 		return $rs;
 	}

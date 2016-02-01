@@ -1,4 +1,5 @@
 <?php
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	header('Content-Type:text/html;charset=utf-8');
 
 	require_once 'config.php';	//引入配置文件
