@@ -23,7 +23,7 @@ HEAD;
 				$user_name = $current_user["uName"];
 				$headBuf .= <<<HTML_HEAD
 		您好:<a href="userdetail.php">$user_name</a>
-		&nbsp;|&nbsp;<a href="manage/doLogin.php">登出</a> |
+		&nbsp;|&nbsp;<a href="manage/doLogout.php">登出</a> |
 HTML_HEAD;
 			} else {
 				$headBuf .= <<<HTML_HEAD
