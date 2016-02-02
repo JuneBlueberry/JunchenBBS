@@ -6,7 +6,7 @@
 	$cfg["server"]["db_user"]="root";
 	$cfg["server"]["db_psw"]="";
 	$cfg["server"]["db_name"]="jcbbs";
-	$cfg["server"]["page_size"]="20";
+	$cfg["server"]["page_size"]="3";
 
 	/**
 	*论坛错误处理方法

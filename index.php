@@ -59,14 +59,14 @@ HTML_TABLE;
 							</td>
 							<th align="left">
 								<img src="image/board.gif">
-								<a href="list.php?boardId=$boardId & $currentPage=0">$boardName</a>
+								<a href="list.php?boardId=$boardId & currentPage=0">$boardName</a>
 							</th>
 							<td align="center">
 								$count
 							</td>
 							<th>
 								<span>
-									<a href="detail.php?boardId=$boardId & $currentPage=0 & $currentReplyPage=0 & topicId=$topicId">$title<a/>
+									<a href="detail.php?boardId=$boardId & currentPage=0 & currentReplyPage=0 & topicId=$topicId">$title<a/>
 								</span>
 								<br/>
 								<span>$user_name</span>
