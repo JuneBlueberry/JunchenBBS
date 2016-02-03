@@ -38,7 +38,7 @@
 		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and topicId=$topicId";
 		$rs = execQuery($strQuery);
 		if(count($rs)>0){
-			return $rs;
+			return $rs[0];
 		}
 		return $rs;
 	}

@@ -45,8 +45,9 @@
 
 	/*统计指定帖子的回帖数量*/
 	function findCountReply($topicId){
-		$strQuery = "select count (*) as nums from bbs_reply where topicId=$topicId";
+		$strQuery = "select count(*) as nums from bbs_reply where topicId=$topicId";
 		$rs = execQuery($strQuery);
+		$value = 0;
 		if(count($rs)>0){
 			$value = $rs[0]["nums"];
 		}
@@ -61,7 +62,7 @@
 		}
 		$page *= $pageSize;
 
-		$strQuery = "select * from bbs_reply r,bbs_user u where r.uId=u.uId and r.replyId=$topicId order by publishTime desc limit $page , $pageSize";
+		$strQuery = "select * from bbs_reply r,bbs_user u where r.uId=u.uId and r.topicId=$topicId order by publishTime desc limit $page , $pageSize";
 		$rs = execQuery($strQuery);
 		return $rs;
 	}

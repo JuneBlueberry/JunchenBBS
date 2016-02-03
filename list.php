@@ -19,7 +19,6 @@
 		<!-- 导航 -->
 		<br/>
 		<div>
-		<br/>
 			<?php
 				$boardId = $_GET["boardId"];
 				//echo $boardId;
@@ -46,6 +45,7 @@
 				$topicNums = findCountTopic($boardId);		//统计版块帖子数
 				$pageSize = $GLOBALS["cfg"]["server"]["page_size"];		//页面容量
 				//print_r($topicList);
+				//print_r($curBoard);
 				//echo $topicNums;
 				//echo $pageSize;
 				//计算总页数
@@ -121,7 +121,7 @@ HTML_STR;
 								<img src="image/topic.gif" border=0>
 							</td>
 							<td style="fonz-size: 15px">
-								<a href="detail.php?boardId=$boardId & currentPage=$curPage &currentReplyPage=0 & topicId = $topicId">$title</a>
+								<a href="detail.php?boardId=$boardId&currentPage=$curPage&currentReplyPage=0&topicId=$topicId">$title</a>
 							</td>
 							<td align="center">$uName</td>
 							<td align="center">$replyCount</td>
