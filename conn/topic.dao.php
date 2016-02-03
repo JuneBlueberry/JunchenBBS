@@ -70,7 +70,7 @@
 		if($page >= 1){		//分页处理
 			$page --;
 		}
-		$page *= pageSize;
+		$page *= $pageSize;
 
 		//分页查询
 		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and boardId=$boardId order by publishTime desc limit $page ,$pageSize";

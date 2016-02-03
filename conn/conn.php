@@ -17,7 +17,7 @@
 	function execQuery($strQuery){
 		$results = array();
 		$connection = get_Connect();
-		$rs = @mysql_query($strQuery,$connection) or die(header("location:./error.php?msg=查询失败"));
+		$rs = @mysql_query($strQuery,$connection); //or die(header("location:./error.php?msg=查询失败"));
 		for($i=0; $i<mysql_num_rows($rs); $i++){
 			$results[$i] = mysql_fetch_assoc($rs);
 		}

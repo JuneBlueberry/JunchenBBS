@@ -5,9 +5,9 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8"></meta>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<?php
-		require_once 'board.dao.php';
-		require_once 'topic.dao.php';
-		require_once 'reply.dao.php';
+		require_once 'conn/board.dao.php';
+		require_once 'conn/topic.dao.php';
+		require_once 'conn/reply.dao.php';
 	?>
 </head>
 <body>
