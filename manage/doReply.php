@@ -2,6 +2,7 @@
 	/* 处理回帖 */
 
 	header('Content-Type:text/html;charset=utf-8');
+<<<<<<< HEAD
 	require_once '../conn/reply.dao.php';
 
 	$msg = "";
@@ -23,4 +24,6 @@
 	} else {
 		header("location: ../detail.php?boardId=$boardId&currentPage=$currentPage&currentReplyPage=0&topicId=$topicId");
 	}
+=======
+>>>>>>> origin/master
 ?>

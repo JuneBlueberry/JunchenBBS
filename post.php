@@ -51,7 +51,15 @@
 		$boardName = "";	//版块名称
 		$boardId = "";		//版块编号
 		$topicId = empty($_GET["topicId"])?"":$_GET["topicId"];		//帖子编号
+<<<<<<< HEAD
 		$currentPage = empty($_GET["currentPage"])?0:$_GET["currentPage"];		//当前页码
+=======
+<<<<<<< HEAD
+		$currentPage = empty($_GET["currentPage"])?0:$_GET["currentPage"];		//当前页码
+=======
+		$currentPage = empty($_GET["currentPage"])?"":$_GET["currentPage"];		//当前页码
+>>>>>>> origin/master
+>>>>>>> origin/master
 		if(!empty($_GET["boardId"])){
 			$boardId = $_GET["boardId"];
 		} else {
@@ -82,7 +90,15 @@ HTML_STR;
 		</div>
 		<br/>
 		<div>
+<<<<<<< HEAD
 			<!-- <?php
+=======
+<<<<<<< HEAD
+			<!-- <?php
+=======
+			<?php
+>>>>>>> origin/master
+>>>>>>> origin/master
 				$tmp = "发表新帖";
 				if($topicId != ""){		//判断是否为回帖
 					$topic = findTopicById($topicId);
@@ -91,7 +107,15 @@ HTML_STR;
 				}
 
 				$html_str = <<<HTML_STR
+<<<<<<< HEAD
 			<form name="postForm" onsubmit="return valid()" action="manage/doPost.php" methor="POST">
+=======
+<<<<<<< HEAD
+			<form name="postForm" onsubmit="return valid()" action="manage/doPost.php" methor="POST">
+=======
+			<form name="postForm" onsubmit="return valid()" action="manage/doPost.php" methor="post">
+>>>>>>> origin/master
+>>>>>>> origin/master
 				<input type="hidden" name="boardId" value="$boardId"></input>
 				<input type="hidden" name="topicId" value="$topicId"></input>
 				<input type="hidden" name="currentPage" value="$currentPage"></input>
@@ -134,6 +158,10 @@ HTML_STR;
 			</form>
 HTML_STR;
 			echo $html_str;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 			?> -->
 			               <?php
                $tmp = "发表新帖";
@@ -187,6 +215,13 @@ HTML_STR;
 HTML_STR;
                 echo $html_str;
               ?>
+<<<<<<< HEAD
+=======
+=======
+			?>
+			
+>>>>>>> origin/master
+>>>>>>> origin/master
 		</div>
 	</div>
 	<br/>
