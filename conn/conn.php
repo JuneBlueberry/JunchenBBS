@@ -17,7 +17,7 @@
 	function execQuery($strQuery){
 		$results = array();
 		$connection = get_Connect();
-		$rs = @mysql_query($strQuery,$connection) or die(header("location:./error.php?msg=查询失败"));
+		$rs = @mysql_query($strQuery,$connection); //or die(header("location:./error.php?msg=查询失败"));
 		for($i=0; $i<mysql_num_rows($rs); $i++){
 			$results[$i] = mysql_fetch_assoc($rs);
 		}
@@ -29,7 +29,7 @@
 	/*执行修改，删除，插入操作*/
 	function execUpdate($strUpdate){
 		$connection = get_Connect();
-		$rs = @mysql_query($strUpdate,$connection) or die(header("location:./error.php?msg=数据表i操作失败"));
+		$rs = @mysql_query($strUpdate,$connection);// or die(header("location:../error.php?msg=数据表操作失败"));
 		$result = mysql_affected_rows();		//数据影响的哪一行，返回值类型int
 		mysql_close();
 		return $result;

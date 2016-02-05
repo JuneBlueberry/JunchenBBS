@@ -6,15 +6,22 @@
 	require_once "conn.php";
 
 	/*发表帖子*/
+	// function addTopic($title,$content,$uId,$boardId){
+	// 	$format = "%Y/%m/%d %H:%M:%S";		//设置时间格式
+	// 	$publishTime = strftime($format);	//获取当前时间
+
+	// 	$addStr = "insert into bbs_topic (title,content,publishTime,modifyTime,uId,boardId) values ('$title','$content','$publishTime','$publishTime',$uId,$boardId)";
+
+	// 	$rs = execUpdate($addStr);
+	// 	return $rs;
+	// }
 	function addTopic($title,$content,$uId,$boardId){
-		$format = "%Y/%m/%d %H:%M:%S";		//设置时间格式
-		$publishTime = strftime($format);	//获取当前时间
-
-		$addStr = "insert into bbs_topic (title,content,publishTime,modifyTime,uId,boardId) values ('$title','$content','$publishTime','$publishTime',$uId,$boardId)";
-
-		$rs = execUpdata($addStr);
-		return $rs;
-	}
+       	$format = "%Y/%m/%d %H:%M:%S";
+		$publishTime = strftime($format);//获取当前时间
+      	$addStr = "insert into bbs_topic (title,content,publishTime,modifyTime,uId,boardId) values ('$title','$content','$publishTime','$publishTime',$uId,$boardId)";
+       	$rs = execUpdate($addStr);//执行操作
+       return $rs;//返回执行结果
+   }
 
 	/*修改帖子信息*/
 	function updateTopic($topicId,$title,$content){
@@ -38,7 +45,7 @@
 		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and topicId=$topicId";
 		$rs = execQuery($strQuery);
 		if(count($rs)>0){
-			return $rs;
+			return $rs[0];
 		}
 		return $rs;
 	}
@@ -70,7 +77,7 @@
 		if($page >= 1){		//分页处理
 			$page --;
 		}
-		$page *= pageSize;
+		$page *= $pageSize;
 
 		//分页查询
 		$strQuery = "select * from bbs_topic t,bbs_user u where t.uId=u.uId and boardId=$boardId order by publishTime desc limit $page ,$pageSize";
