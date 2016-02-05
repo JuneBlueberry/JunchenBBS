@@ -40,7 +40,11 @@
 			$msg = "";				//出错信息
 			if(isset($boardId)){	//判断版块是否存在
 				$curBoard = findBoard($boardId);
+<<<<<<< HEAD
 				$curTopic = findTopicById($topicId);
+=======
+				$curTopic = findTopicById($boardId);
+>>>>>>> origin/master
 				if(count($curBoard) >= 0){
 					$boardName = $curBoard["boardName"];
 				} else {
